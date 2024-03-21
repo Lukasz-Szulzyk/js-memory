@@ -28,7 +28,7 @@ class Memory {
     }
 
     randomizeSymbols = () => {
-        for (let i=this.symbols.length-1; i > 0; i--) {
+        for (let i = this.symbols.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             let temp = this.symbols[i];
             this.symbols[i] = this.symbols[j];
@@ -115,6 +115,13 @@ class Memory {
             tile.classList.remove("is-flipped");
             tile.setAttribute("data-status", "");
         });
+        this.randomizeSymbols();
+        setTimeout( () => {
+            this.deck.innerHTML = "";
+            this.tiles = [];
+            this.addTiles();
+            this.addListeners();
+            }, 1000 );
     } 
 }
 
